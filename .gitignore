@@ -36,4 +36,4 @@ lib/
 build/
 cmake-build-debug/
 spec/ccspec
-
+.idea/serial*

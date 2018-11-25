@@ -6,12 +6,12 @@ git submodule init
 git submodule update 
 
 rm -rf build bin lib
-mkdir -p build
-cd build
-cmake ..
+mkdir -p build/debug
+cd build/debug
+cmake ../..
 make -j 4 
 make install
-cd ..
+cd ../..
 
 # now run the tests
 for binary in $(find bin -type f -perm -111); do 
