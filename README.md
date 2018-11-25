@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kigster/kigame-cpp.svg?branch=master)](https://travis-ci.org/kigster/kigame-cpp)
+
 # kigamé 
 
 A set of generic C++ interfaces and classes to aid with modeling basic 2-player board games.
