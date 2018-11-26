@@ -16,19 +16,14 @@ addons:
       - llvm-toolchain-cosmic-3.9
     packages:
       - cmake
-      - clang-3.7
+      - clang-3.9
       - g++-8
       - cppcheck
-
-before_install:
-  - if [ "$CXX" = "g++" ] && [ $TRAVIS_OS_NAME = "linux" ]; then export CXX="g++-8"; fi
-  - if [ $TRAVIS_OS_NAME = "osx" ]; then brew update; brew install cppcheck; fi
 
 cache: ccache
 
 os:
   - linux
-  - osx
 
 notifications:
   email: false
