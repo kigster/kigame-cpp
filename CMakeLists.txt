@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 2.8.11)
-set(PROJECT_LIBRARY "kigame")
+set(APP_NAME "kigame")
 
-project(${PROJECT_LIBRARY} C CXX)
+project(${APP_NAME} C CXX)
 
 include(CMakeForceCompiler)
 
 if (APPLE)
     set(CMAKE_MACOSX_RPATH ON)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
 elseif (WIN32 OR UNIX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif (APPLE)
 
 set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
@@ -18,24 +18,7 @@ set(INC_DIR ${CMAKE_SOURCE_DIR}/include)
 
 file(MAKE_DIRECTORY ${BIN_DIR} ${LIB_DIR} ${INC_DIR})
 
-include_directories(include)
-include_directories(${LIB_DIR})
-
-set(SOURCE_FILES
-        src/Move.cpp
-        src/Board.cpp
-        src/Player.cpp
-        src/Game.cpp
-        )
-
-file(GLOB HEADER_FILES "src/*.h")
-
-add_library(${PROJECT_LIBRARY} ${HEADER_FILES} ${SOURCE_FILES})
-set_target_properties(${PROJECT_LIBRARY} PROPERTIES LINKER_LANGUAGE CXX)
-
-install(TARGETS ${PROJECT_LIBRARY} DESTINATION ${LIB_DIR})
-install(FILES ${HEADER_FILES} DESTINATION ${INC_DIR})
-
+add_subdirectory(src)
 add_subdirectory(spec)
 
 

@@ -18,6 +18,7 @@ using ccspec::core::after;
 using ccspec::core::before;
 using ccspec::core::describe;
 using ccspec::core::formatters::DocumentationFormatter;
+using ccspec::core::formatters::ProgressFormatter;
 using ccspec::core::it;
 using ccspec::matchers::be;
 using ccspec::matchers::be_falsey;
@@ -40,13 +41,13 @@ auto game_spec = describe("Game", [] {
       players[1] = &player2;
       Game game1 = Game(board, players);
       Game game2 = Game(board, players);
-      expect(&game1.getBoard()).to(eq(&(game2.getBoard())));
+      expect(&game1.getBoard()).notTo(eq(&game2.getBoard()));
     });
   });
 });
 
 int main() {
-  DocumentationFormatter formatter(cout);
+  ProgressFormatter formatter(cout);
   Reporter reporter(&formatter);
   bool succeeded = game_spec->run(reporter);
   delete game_spec;
