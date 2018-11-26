@@ -18,12 +18,14 @@ DCXX="/usr/local/bin/g++-8"
 build::env::print() {
   printf "———————————————————————————————————————————————————————\n"
   printf "${bldylw}PATH: ${clr}CC=${bldgrn}=${bldblu}${CC}${clr}\n"
-  printf "${bldylw}PATH: ${clr}GCC=${bldgrn}$(which gcc)${clr}\n"
-  printf "${bldylw}PATH: ${clr}GCC=${bldgrn}$(gcc --version 2>&1 | head -2 | tr '\n' '; ')${clr} CC=${bldblu}${CC}${clr}\n\n"
+  [[ -z "${CC}" ]] || printf "${bldylw}PATH: ${clr}(which CC)=${bldgrn}$(which ${CC})${clr}\n"
+  printf "${bldylw}PATH: ${clr}(which gcc)=${bldgrn}$(which gcc)${clr}\n"
+  printf "${bldylw}PATH: ${clr}(gcc --version)=${bldgrn}$(gcc --version 2>&1 | head -2 | tr '\n' '; ')${clr} CC=${bldblu}${CC}${clr}\n\n"
 
   printf "${bldylw}PATH: ${clr}CXX=${bldblu}${CXX}${clr}\n"
-  printf "${bldylw}PATH: ${clr}GXX=${bldgrn}$(which g++)${clr}\n"
-  printf "${bldylw}PATH: ${clr}GXX=${bldgrn}$(g++ --version 2>&1 | head -2 | tr '\n' '; ')${clr}\n\n"
+  [[ -z "${CXX}" ]] || printf "${bldylw}PATH: ${clr}(which CXX)=${bldgrn}$(which ${CXX})${clr}\n"
+  printf "${bldylw}PATH: ${clr}(which g++)=${bldgrn}$(which g++)${clr}\n"
+  printf "${bldylw}PATH: ${clr}(g++ --version)=${bldgrn}$(g++ --version 2>&1 | head -2 | tr '\n' '; ')${clr}\n\n"
   printf "———————————————————————————————————————————————————————\n\n"
 }
 

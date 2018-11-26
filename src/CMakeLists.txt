@@ -14,8 +14,15 @@ set(HEADER_FILES
         Game.h
         )
 
-add_library(${APP_NAME} ${HEADER_FILES} ${SOURCE_FILES})
-set_target_properties(${APP_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+add_library(${APP_NAME} 
+  ${HEADER_FILES} 
+  ${SOURCE_FILES})
+
+set_target_properties(${APP_NAME} 
+  PROPERTIES 
+  CXX_STANDARD 17
+  CXX_EXTENSIONS OFF
+  LINKER_LANGUAGE CXX)
 
 install(TARGETS ${APP_NAME} DESTINATION ${LIB_DIR})
 install(FILES ${HEADER_FILES} DESTINATION ${INC_DIR})
