@@ -3,13 +3,20 @@ set(APP_NAME "kigame")
 
 project(${APP_NAME} C CXX)
 
-include(CMakeForceCompiler)
-
 if (APPLE)
+  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    message("  Clang Compatible compiler detected.")
     set(CMAKE_MACOSX_RPATH ON)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
-elseif (WIN32 OR UNIX)
+  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    message("  GNU Compatible compiler detected.")
+    set(CMAKE_MACOSX_RPATH ON)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+  else ()
+    message("  Neither CLang nor GNU, compiler is ${CMAKE_CXX_COMPILER_ID}")
+  endif()
+elseif (WIN32 OR UNIX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif (APPLE)
 
 set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
