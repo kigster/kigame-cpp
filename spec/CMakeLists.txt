@@ -22,8 +22,6 @@ target_link_libraries(${APP_SPECS} ccspec ${APP_NAME})
 
 set_target_properties(${APP_SPECS}
   PROPERTIES
-  CXX_STANDARD 17
-  CXX_EXTENSIONS OFF
   LINKER_LANGUAGE CXX)
 
 add_test(NAME ${APP_SPECS} COMMAND ${APP_SPECS})
