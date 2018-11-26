@@ -10,17 +10,16 @@ if [[ -z "${FORCE_DEFAULT_COMPILER}" && -x "${DCC}" && -x "${DCXX}" ]]; then
   export CXX="${CXX:-${DCXX}}"
 fi
 
-# git submodule init && git submodule update 
+git submodule init && git submodule update 
 
-rm -rf build bin lib
-mkdir -p build/debug && cd build/debug
+rm -rf build bin lib; mkdir -p build/debug; cd build/debug
 
-set -e -x
-
-cmake ../.. && make -j 8 && make install
+cmake ../.. 
+make -j 8 
+make install
 
 cd ../..
-set -e -x
+
 # now run the tests
 for binary in $(find bin -type f -perm -111); do 
   echo " Running file ${binary}..."
