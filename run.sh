@@ -40,7 +40,8 @@ set -e -x
 
 git submodule init && git submodule update 
 
-rm -rf build bin lib; mkdir -p build/debug; cd build/debug
+rm -rf build bin lib; mkdir -p build/debug
+cd build/debug
 
 cmake ../.. 
 make -j 8 
@@ -50,6 +51,9 @@ cd ../..
 
 # now run the tests
 set +x
+
+export LD_LIBRARY_PATH="$(pwd)/lib:${LD_LIBRARY_PATH}"
+
 for binary in $(find bin -type f -perm -111); do 
   echo " Running file ${binary}..."
   ${binary}; code=$?
