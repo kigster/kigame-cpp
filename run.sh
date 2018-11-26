@@ -52,7 +52,7 @@ cd ../..
 # now run the tests
 set +x
 
-export LD_LIBRARY_PATH="$(pwd)/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="$(pwd)/lib:/usr/lib:/usr/local/lib:${LD_LIBRARY_PATH}"
 
 for binary in $(find bin -type f -perm -111); do 
   echo " Running file ${binary}..."
