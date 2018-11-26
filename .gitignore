@@ -33,6 +33,7 @@
 bii/
 bin/
 lib/
+include/
 build/
 cmake-build-debug/
 spec/ccspec
