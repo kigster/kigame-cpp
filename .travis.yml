@@ -21,6 +21,8 @@ addons:
       - cppcheck
 
 cache: ccache
+env:
+  - LD_LIBRARY_PATH=/usr/local/clang-5.0.0/
 
 os:
   - linux
