@@ -22,7 +22,7 @@ addons:
 
 cache: ccache
 env:
-  - LD_LIBRARY_PATH=/usr/local/clang-5.0.0/
+  - LD_LIBRARY_PATH=/usr/local/clang-5.0.0/lib
 
 os:
   - linux
